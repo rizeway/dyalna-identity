@@ -1,0 +1,9 @@
+{
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "dyalna-identity_db",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

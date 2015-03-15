@@ -1,0 +1,17 @@
+{
+  "name": "dyalna-identity",
+  "version": "1.0.0",
+  "description": "Simple SSO Authentication/Authorization Server",
+  "main": "src/server.js",
+  "author": "Riad Benguella <riad@rizeway.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-uuid": "^1.4.1",
+    "lodash": "~2.4.1",
+    "body-parser": "~1.9.2",
+    "express": "~4.10.2",
+    "sequelize-cli": "~1.4.0",
+    "sequelize": "~2.0.4",
+    "mysql": "~2.5.5"
+  }
+}
