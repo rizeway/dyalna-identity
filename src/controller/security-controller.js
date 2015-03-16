@@ -2,7 +2,11 @@ module.exports = function(uuid, db) {
 
   return {
     loginAction: function(req, res) {
-      db.User.find({ where: { username: req.body.username, password: req.body.password, account: req.body.account } }).then(function(user) {
+      db.User.find({ where: {
+        username: req.body.username,
+        password: req.body.password,
+        active: true
+      } }).then(function(user) {
         db.Session.create({
           username: user.username,
           token: uuid.v1()

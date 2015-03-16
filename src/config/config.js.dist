@@ -1,0 +1,34 @@
+module.exports = {
+  port: '4000',
+  securityTokenName: 'x-dyalna-identity-token',
+  mailer: {
+    transport: {
+      service: 'Gmail',
+      auth: {
+        user: 'some-user@gmail.com',
+        pass: 'some-password'
+      }
+    },
+    activation: {
+      from: 'Dyalna Identity <some-email@domain.com>',
+      subject: 'Dyalna Identity : Confirm your email',
+      activationLink: 'http://domain.com/activate?token='
+    }
+  },
+
+  features: {
+    /*'admin-feature' : {
+      roles: ['admin']
+    },
+    'premium-feature': {
+      plan: ['premium']
+    }*/
+  },
+
+  limitations: {
+    /*'some-limit' : {
+      'free': 1,
+      'premium': 0
+    }*/
+  }
+};

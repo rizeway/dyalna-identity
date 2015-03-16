@@ -15,7 +15,8 @@ module.exports = function(db) {
               email: 'admin@example.com',
               roles: ['superadmin'],
               account: account.id,
-              main: true
+              main: true,
+              active: true
             });
           });
         }

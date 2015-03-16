@@ -11,6 +11,8 @@ app.get('/', function (req, res) {
 
 // User
 app.get('/me', container.middlewares.authentication, container.controllers.userController.meAction);
+app.post('/subscribe', container.controllers.userController.subscribeAction);
+app.get('/activate', container.controllers.userController.activateAction);
 
 // Security
 app.post('/login', container.controllers.securityController.loginAction);

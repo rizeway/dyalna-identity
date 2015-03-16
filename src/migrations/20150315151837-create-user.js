@@ -28,6 +28,14 @@ module.exports = {
       roles: {
         type: DataTypes.TEXT
       },
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
+      activationCode: {
+        type: DataTypes.STRING,
+        unique: true
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

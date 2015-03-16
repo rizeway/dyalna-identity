@@ -12,7 +12,15 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING,
     main: DataTypes.BOOLEAN,
     account: DataTypes.INTEGER,
-    roles: DataTypes.ARRAY(DataTypes.STRING)
+    roles: DataTypes.ARRAY(DataTypes.STRING),
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    activationCode: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {
     classMethods: {
       associate: function(models) {

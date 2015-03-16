@@ -1,10 +1,16 @@
+var path           = require('path');
+
 //Vendor
 var _ = require('lodash');
 var uuid = require('node-uuid');
 var bodyParser = require('body-parser');
+var emailTemplates = require('email-templates');
+var nodemailer = require('nodemailer');
+var Q = require('q');
 
 // Config
 var config = require('./config/config');
+var templatesDirectory = path.resolve(__dirname, 'templates');
 
 // Mongo
 var db = require('./models');
@@ -32,12 +38,16 @@ var fixtures = {
   user: new UserData(db)
 };
 
+// Mailer
+var ConfirmationMailer = require('./mailer/confirmation-mailer');
+var confirmationMailer = new ConfirmationMailer(Q, nodemailer, emailTemplates, config.mailer, templatesDirectory);
+
 // Controllers
 var UserController = require('./controller/user-controller');
 var AccountController = require('./controller/account-controller');
 var SecurityController = require('./controller/security-controller');
 var controllers = {
-  userController: new UserController(),
+  userController: new UserController(db, uuid, confirmationMailer),
   securityController: new SecurityController(uuid, db),
   accountController: new AccountController(db)
 };
