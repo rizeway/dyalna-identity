@@ -8,7 +8,13 @@ module.exports = function(securityHeaderName, db, featuresProcessor, limitations
 
     var securityHeaderValue = req.get(securityHeaderName);
     db.Session.find({ where: { token: securityHeaderValue } }).then(function(session) {
+      if (null === session) {
+        return next();
+      }
       db.User.find({ where: { username: session.username } }).then(function(user) {
+        if (null === user) {
+          return next();
+        }
         db.Account.find(user.account).then(function(account) {
           var securityUser = {
             username: user.username,
@@ -22,6 +28,5 @@ module.exports = function(securityHeaderName, db, featuresProcessor, limitations
         }, next);
       }, next);
     }, next);
-
   };
 };
