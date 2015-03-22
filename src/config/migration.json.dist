@@ -1,0 +1,10 @@
+{
+  "production": {
+    "host": { "ENV" : "MYSQL_HOST" },
+    "user": { "ENV" : "MYSQL_USERNAME" },
+    "password" : { "ENV" : "MYSQL_PASSWORD" },
+    "database": { "ENV" : "MYSQL_DATABASE" },
+    "driver": "mysql",
+    "multipleStatements": true
+  }
+}

@@ -1,18 +1,28 @@
 module.exports = {
   port: '4000',
-  securityTokenName: 'x-dyalna-identity-token',
+  securityTokenName: process.env.IDENTITY_TOKEN,
   mailer: {
     transport: {
       service: 'Gmail',
       auth: {
-        user: 'some-user@gmail.com',
-        pass: 'some-password'
+        user: process.env.IDENTITY_GMAIL_USERNAME,
+        pass: process.env.IDENTITY_GMAIL_PASSWORD
       }
     },
     activation: {
       from: 'Dyalna Identity <some-email@domain.com>',
       subject: 'Dyalna Identity : Confirm your email',
       activationLink: 'http://domain.com/activate?token='
+    }
+  },
+
+  database: {
+    production: {
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+      host: process.env.MYSQL_HOST,
+      dialect: 'mysql'
     }
   },
 

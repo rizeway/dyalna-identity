@@ -4,18 +4,19 @@
   "description": "Simple SSO Authentication/Authorization Server",
   "main": "src/server.js",
   "author": "Riad Benguella <riad@rizeway.com>",
+  "repository": "https://github.com/rizeway/dyalna-identity",
   "license": "MIT",
   "dependencies": {
     "node-uuid": "^1.4.1",
     "lodash": "~2.4.1",
     "body-parser": "~1.9.2",
     "express": "~4.10.2",
-    "sequelize-cli": "~1.4.0",
     "sequelize": "~2.0.4",
     "mysql": "~2.5.5",
     "email-templates": "~1.2.0",
     "nodemailer": "~1.3.2",
     "handlebars": "~3.0.0",
-    "q": "~1.2.0"
+    "q": "~1.2.0",
+    "db-migrate": "~0.9.10"
   }
 }

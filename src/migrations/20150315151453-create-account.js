@@ -1,34 +1,33 @@
-"use strict";
 module.exports = {
-  up: function(migration, DataTypes, done) {
-    migration.createTable("Accounts", {
+  up: function(db, done) {
+    db.createTable('Accounts', {
       id: {
-        allowNull: false,
+        notNull: true,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: 'int'
       },
       name: {
-        type: DataTypes.STRING,
+        type: 'string',
         unique: true
       },
       plan: {
-        type: DataTypes.STRING
+        type: 'string'
       },
       expireAt: {
-        type: DataTypes.DATE
+        type: 'date'
       },
       createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        notNull: true,
+        type: 'date'
       },
       updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        notNull: true,
+        type: 'date'
       }
-    }).done(done);
+    }, done);
   },
-  down: function(migration, DataTypes, done) {
-    migration.dropTable("Accounts").done(done);
+  down: function(db, done) {
+    db.dropTable('Accounts', done);
   }
 };

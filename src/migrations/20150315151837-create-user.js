@@ -1,52 +1,51 @@
-"use strict";
 module.exports = {
-  up: function(migration, DataTypes, done) {
-    migration.createTable("Users", {
+  up: function(db, done) {
+    db.createTable('Users', {
       id: {
-        allowNull: false,
+        notNull: true,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: 'int'
       },
       username: {
-        type: DataTypes.STRING,
+        type: 'string',
         unique: true
       },
       password: {
-        type: DataTypes.STRING
+        type: 'string'
       },
       email: {
-        type: DataTypes.STRING,
+        type: 'string',
         unique: true
       },
       main: {
-        type: DataTypes.BOOLEAN
+        type: 'boolean'
       },
       account: {
-        type: DataTypes.INTEGER
+        type: 'int'
       },
       roles: {
-        type: DataTypes.TEXT
+        type: 'text'
       },
       active: {
-        type: DataTypes.BOOLEAN,
+        type: 'boolean',
         defaultValue: false
       },
       activationCode: {
-        type: DataTypes.STRING,
+        type: 'string',
         unique: true
       },
       createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        notNull: true,
+        type: 'date'
       },
       updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
+        notNull: true,
+        type: 'date'
       }
-    }).done(done);
+    }, done);
   },
-  down: function(migration, DataTypes, done) {
-    migration.dropTable("Users").done(done);
+  down: function(db, done) {
+    db.dropTable('Users', done);
   }
 };
