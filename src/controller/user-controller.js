@@ -4,7 +4,7 @@ module.exports = function(db, uuid, confirmationMailer) {
       res.send(req.security.user);
     },
 
-    subscribeAction: function(req, res) {
+    registerAction: function(req, res) {
       db.Account.create({
         name: req.body.username,
         plan: 'default'

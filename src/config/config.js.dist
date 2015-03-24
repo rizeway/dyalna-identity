@@ -12,7 +12,7 @@ module.exports = {
     activation: {
       from: 'Dyalna Identity <some-email@domain.com>',
       subject: 'Dyalna Identity : Confirm your email',
-      activationLink: 'http://domain.com/activate?token='
+      activationLink: process.env.IDENTITY_ACTIVATION_LINK
     }
   },
 
