@@ -9,7 +9,7 @@ Why
 Dyalna Identity is meant to be a standalone SSO Authentication / Authorisation and Licensing serveur with this built-in features :
 
  * Handling User Authentication
- * Handling User Subscription (wip)
+ * Handling User Subscription
  * Handling Features authorization depending on user roles and on accounts plans
  * Handling Fautres Limitations depending on accounts plans
 
@@ -30,3 +30,8 @@ Installation
  * Create the database
  * Migrate the database `./node_modules/.bin/sequelize db:migrate --config src/config/config.json --migrations-path src/migrations --models-path models-path --env production`
  * launch the server `node src/server.js`
+
+TODO
+----
+
+ * session expiration management
