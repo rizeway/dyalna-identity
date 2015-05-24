@@ -1,4 +1,4 @@
-module.exports = function(db, uuid, confirmationMailer) {
+module.exports = function(db, uuid, confirmationMailer, lostPasswordMailer, regeneratePasswordMailer) {
   return {
     meAction: function(req, res) {
       res.send(req.security.user);
@@ -38,5 +38,31 @@ module.exports = function(db, uuid, confirmationMailer) {
         res.status(500).send({ status: 'error' });
       });
     },
+
+    lostPasswordAction: function(req, res) {
+      db.User.find({ where: { email: req.query.email, active: true } }).then(function(user) {
+        user.activationCode = uuid.v1();
+        return user.save();
+      }).then(function(user) {
+        return lostPasswordMailer.send(user);
+      }).then(function() {
+        res.send({ status: 'ok' });
+      }, function() {
+        res.status(500).send({ status: 'error' });
+      });
+    },
+
+    regeneratePasswordAction: function(req, res) {
+      db.User.find({ where: { activationCode: req.query.token } }).then(function(user) {
+        user.password = uuid.v1();
+        return user.save();
+      }).then(function(user) {
+        return regeneratePasswordMailer.send(user);
+      }).then(function() {
+        res.send({ status: 'ok' });
+      }, function() {
+        res.status(500).send({ status: 'error' });
+      });
+    }
   };
 };

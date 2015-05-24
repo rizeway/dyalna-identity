@@ -12,6 +12,7 @@ Dyalna Identity is meant to be a standalone SSO Authentication / Authorisation a
  * Handling User Subscription
  * Handling Features authorization depending on user roles and on accounts plans
  * Handling Fautres Limitations depending on accounts plans
+ * Handling Password Loss
 
 Principles
 ----------

@@ -12,6 +12,8 @@ app.get('/', function (req, res) {
 // User
 app.get('/me', container.middlewares.authentication, container.controllers.userController.meAction);
 app.post('/register', container.controllers.userController.registerAction);
+app.put('/lostPassword', container.controllers.userController.lostPasswordAction);
+app.put('/regeneratePassword', container.controllers.userController.regeneratePasswordAction);
 app.get('/activate', container.controllers.userController.activateAction);
 
 // Security

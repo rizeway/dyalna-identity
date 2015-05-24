@@ -13,6 +13,15 @@ module.exports = {
       from: 'Dyalna Identity <some-email@domain.com>',
       subject: 'Dyalna Identity : Confirm your email',
       activationLink: process.env.IDENTITY_ACTIVATION_LINK
+    },
+    lostPassword: {
+      from: 'Dyalna Identity <some-email@domain.com>',
+      subject: 'Dyalna Identity : Lost password ?',
+      lostPasswordLink: process.env.IDENTITY_LOST_PASSWORD_LINK
+    },
+    regeneratePassword: {
+      from: 'Dyalna Identity <some-email@domain.com>',
+      subject: 'Dyalna Identity : Your new password'
     }
   },
 

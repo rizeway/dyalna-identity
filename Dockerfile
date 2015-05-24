@@ -1,4 +1,5 @@
-FROM dockerfile/nodejs
+FROM node:0.12
+RUN apt-get update && apt-get install -y netcat
 COPY ./ /code
 WORKDIR /code
 RUN cp src/config/config.js.dist src/config/config.js \

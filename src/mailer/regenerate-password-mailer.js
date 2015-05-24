@@ -11,17 +11,16 @@ module.exports = function(Q, nodemailer, emailTemplates, mailerConfig, templates
         var transport = nodemailer.createTransport(mailerConfig.transport);
 
         // Send a single email
-        template('confirmation-email', {
-          user: user,
-          config: mailerConfig.activation
+        template('regenerate-password-email', {
+          user: user
         }, function(err, html) {
           if (err) {
           deferred.reject(err);
           } else {
             transport.sendMail({
-              from: mailerConfig.activation.from,
+              from: mailerConfig.regeneratePassword.from,
               to: user.email,
-              subject: mailerConfig.activation.subject,
+              subject: mailerConfig.regeneratePassword.subject,
               html: html,
               generateTextFromHTML: true
             }, function(err, responseStatus) {

@@ -7,14 +7,18 @@ module.exports = function(uuid, db) {
         password: req.body.password,
         active: true
       } }).then(function(user) {
-        db.Session.create({
-          username: user.username,
-          token: uuid.v1()
-        }).then(function(session) {
-          res.send({ token: session.token });
-        }, function() {
-          return res.status(500).send({ status: 'error', message : 'database error' });
-        });
+        if (!user) {
+          res.status(401).send({ status: 'error', message: 'Invalid credentials' });
+        } else {
+          db.Session.create({
+            username: user.username,
+            token: uuid.v1()
+          }).then(function(session) {
+            res.send({ token: session.token });
+          }, function() {
+            return res.status(500).send({ status: 'error', message : 'database error' });
+          });
+        }
       }, function() {
         res.status(401).send({ status: 'error', message: 'Invalid credentials' });
       });
