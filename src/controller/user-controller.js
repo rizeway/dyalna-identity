@@ -63,6 +63,17 @@ module.exports = function(db, uuid, confirmationMailer, lostPasswordMailer, rege
       }, function() {
         res.status(500).send({ status: 'error' });
       });
+    },
+
+    changePasswordAction: function(req, res) {
+      db.User.find({ where: { username: req.security.user.username } }).then(function(user) {
+        user.password = req.body.password;
+        return user.save();
+      }).then(function() {
+        res.send({ status: 'ok' });
+      }, function() {
+        res.status(500).send({ status: 'error' });
+      });
     }
   };
 };
