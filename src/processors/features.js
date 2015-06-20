@@ -7,7 +7,7 @@ module.exports = function(_, featuresConfig) {
       Object.keys(featuresConfig).forEach(function(feature) {
         var config = featuresConfig[feature];
         var hasFeature = true;
-        if (config.roles && _.intersection(user.roles, config.roles).length === 0) {
+        if (config.roles && _.intersection(user.roles.split(','), config.roles).length === 0) {
           hasFeature = false;
         }
         if (config.plans && config.plans.indexOf(plan, config.plans) === -1) {

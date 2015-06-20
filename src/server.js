@@ -16,6 +16,7 @@ app.post('/register', container.controllers.userController.registerAction);
 app.put('/lostPassword', container.controllers.userController.lostPasswordAction);
 app.put('/regeneratePassword', container.controllers.userController.regeneratePasswordAction);
 app.get('/activate', container.controllers.userController.activateAction);
+app.get('/user', new container.middlewares.authorization(['admin']), container.controllers.userController.findAction);
 
 // Security
 app.post('/login', container.controllers.securityController.loginAction);

@@ -36,12 +36,9 @@ module.exports = {
   },
 
   features: {
-    /*'admin-feature' : {
-      roles: ['admin']
-    },
-    'premium-feature': {
-      plan: ['premium']
-    }*/
+    admin : {
+      roles: ['superadmin']
+    }
   },
 
   limitations: {

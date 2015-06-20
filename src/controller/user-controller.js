@@ -4,6 +4,17 @@ module.exports = function(db, uuid, confirmationMailer, lostPasswordMailer, rege
       res.send(req.security.user);
     },
 
+    findAction: function(req, res) {
+      db.User.findAll({ where: { username: { $in: req.query.usernames } } }).then(function(users) {
+        res.send({ status: 'ok', data: users.map(function(user) {
+            user.password = undefined;
+
+            return user;
+          })
+        });
+      });
+    },
+
     registerAction: function(req, res) {
       db.Account.create({
         name: req.body.username,

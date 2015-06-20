@@ -15,10 +15,11 @@ module.exports = function(securityHeaderName, db, featuresProcessor, limitations
         if (null === user) {
           return next();
         }
-        db.Account.find(user.account).then(function(account) {
+        db.Account.findById(user.account).then(function(account) {
           var securityUser = {
             username: user.username,
-            roles: user.roles,
+            email: user.email,
+            roles: user.roles.split(','),
             features: featuresProcessor.process(user, account),
             limitations: limitationsProcessor.process(account),
             account: user.account
