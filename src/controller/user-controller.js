@@ -31,7 +31,7 @@ module.exports = function(db, uuid, confirmationMailer, lostPasswordMailer, rege
           activationCode: uuid.v1()
         });
       }).then(function(user) {
-        return confirmationMailer.send(user);
+        return confirmationMailer.send(user, req.query.domain);
       }).then(function() {
         res.send({ status: 'ok' });
       }, function() {
@@ -55,7 +55,7 @@ module.exports = function(db, uuid, confirmationMailer, lostPasswordMailer, rege
         user.activationCode = uuid.v1();
         return user.save();
       }).then(function(user) {
-        return lostPasswordMailer.send(user);
+        return lostPasswordMailer.send(user, req.query.domain);
       }).then(function() {
         res.send({ status: 'ok' });
       }, function() {

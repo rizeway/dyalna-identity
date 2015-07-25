@@ -1,7 +1,7 @@
 module.exports = function(Q, nodemailer, emailTemplates, mailerConfig, templatesDirectory) {
 
   return {
-    send: function(user) {
+    send: function(user, domain) {
       var deferred = Q.defer();
       emailTemplates(templatesDirectory, function(err, template) {
         if (err) {
@@ -13,7 +13,9 @@ module.exports = function(Q, nodemailer, emailTemplates, mailerConfig, templates
         // Send a single email
         template('confirmation-email', {
           user: user,
-          config: mailerConfig.activation
+          link: mailerConfig.activation.activationLink
+            .replace('{domain}', domain)
+            .replace('{token}', user.activationCode)
         }, function(err, html) {
           if (err) {
           deferred.reject(err);
